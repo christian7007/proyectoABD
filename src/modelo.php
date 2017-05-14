@@ -218,6 +218,13 @@ function aniadir_gusto($conexion, $usuario, $genero){
     $stmt->close();
 }
 
+function crear_grupo($conexion, $fechamin, $fechamax, $genero, $nombre){
+    $stmt = $conexion->prepare("INSERT INTO grupos (nombre, usuario) SELECT '".$nombre."', nombre FROM usuario WHERE (f_nacimiento BETWEEN ? AND ?) AND (nombre IN (SELECT usuario FROM gustos WHERE genero = ?))");
+    $stmt->bind_param("sss", $fechamax, $fechamin, $genero);
+    $stmt->execute();
+    $stmt->close();
+}
+
 function cerrar_sesion(){
     session_start();
     session_unset();

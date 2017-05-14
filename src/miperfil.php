@@ -90,12 +90,15 @@
                             <h4 class="col-xs-10 col-xs-push-2">Añadir grupo:</h4>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <form action="" method="GET" id="comment-form">
-                                        <div class="col-xs-2 col-xs-push-2">
-                                            <input type="number" class="form-control" id="edad" placeholder="Edad">
+                                    <form action="addGrupo.php" method="POST" id="grupo-form">
+                                        <div class="col-xs-1 col-xs-push-2">
+                                            <input type="number" class="form-control" id="edadmin" form="grupo-form" name="edadmin" placeholder="Edad min">
+                                        </div>
+                                        <div class="col-xs-1 col-xs-push-2">
+                                            <input type="number" class="form-control" id="edadmax" form="grupo-form" name="edadmax" placeholder="Edad max">
                                         </div>
                                         <div class="col-xs-2 col-xs-push-2">
-                                            <select class="form-control">
+                                            <select class="form-control" form="grupo-form" name="genero">
                                                 <?php 
                                                 $generos =  getGeneros();
                                                 foreach($generos as $genero)

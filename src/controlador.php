@@ -103,7 +103,7 @@ function hacerAdmin($usuario){
         hacer_admin($db, $usuario);
         return true;
     }
-    
+
     return false;
 }
 
@@ -111,7 +111,7 @@ function getGustos($usuario){
     $db = conectar("localhost", "root");
     $ret =get_gustos($db, $usuario);
     desconectar($db);
-    
+
     return $ret;
 }
 
@@ -119,6 +119,22 @@ function aniadirGusto($usuario, $genero){
     $db = conectar("localhost", "root");
     aniadir_gusto($db, $usuario, $genero);
     desconectar($db);
+}
+
+function crearGrupo($edadmin, $edadmax, $genero, $nombre){
+
+    if ($edadmin <= $edadmax){
+        $db = conectar("localhost", "root");
+        $fechamin = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y") - $edadmin));
+        $fechamax = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y") - $edadmax));
+
+        crear_grupo($db, $fechamin, $fechamax, $genero, $nombre);
+        desconectar($db);
+        
+        return true;
+    }
+    
+    return false;
 }
 
 ?>
