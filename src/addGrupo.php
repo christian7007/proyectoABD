@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if (crearGrupo($edadmin, $edadmax, $genero, $nombre))
         header("location: miperfil.php");
     else
-        "<link href='../css/bootstrap.min.css' rel='stylesheet'><div class='alert alert-danger text-center'>\n<h4>No se pudo crear el grupo</h4>\n</div>";
+        echo "<link href='../css/bootstrap.min.css' rel='stylesheet'><div class='alert alert-danger text-center'>\n<h4>No se pudo crear el grupo</h4>\n</div>";
     
 }
 ?>

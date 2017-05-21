@@ -1,11 +1,11 @@
 function validarLogin() {
-    "use strict";
-    
-    var ret = (validarUsuario() & validarContrasenya());
+   "use strict";
 
-    if (ret === 0) {
-        return false;
-    } else {
-        return true;
-    }
+   var ret = (validarUsuario() & validarContrasenya());
+
+   if (ret === 0) {
+      return false;
+   } else {
+      return true;
+   }
 }

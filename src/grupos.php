@@ -7,10 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $usuario = $_SESSION["nombre"];
     $fecha = date("y-m-d H:i:s");
 
-    if (($grupo != "") && ($mensaje != ""))
-        enviarMensajeGrupo($usuario, $grupo, $mensaje, $fecha);
-    //para evitar que si usamos f5 se vuelva a insertar el mensaje
-    header("Location: ".htmlspecialchars($_SERVER["PHP_SELF"]));
+    if (($grupo != "") && ($mensaje != "")){
+      if(enviarMensajeGrupo($usuario, $grupo, $mensaje, $fecha))
+         header("Location: ".htmlspecialchars($_SERVER["PHP_SELF"]));//para evitar que si usamos f5 se vuelva a insertar el mensaje
+      else
+         header("Location: errorMensaje.html");;
+   }
+   else
+      header("Location: errorMensaje.html");
 }
 ?>
 <html lang="en">
