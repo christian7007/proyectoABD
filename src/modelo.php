@@ -103,7 +103,7 @@ function get_mensajes_grupo($conexion, $grupo, $fecha){
 }
 
 function get_mensajes_privados_enviados($conexion, $usuario){
-   $stmt = $conexion->prepare("SELECT mensaje, usuarioDestinatario, fecha FROM mensajes WHERE emisor = ? and usuarioDestinatario IS NOT NULL");
+   $stmt = $conexion->prepare("SELECT mensaje, usuarioDestinatario, fecha FROM mensajes WHERE emisor = ? and usuarioDestinatario IS NOT NULL ORDER BY 3 DESC");
    $stmt->bind_param("s", $usuario);
    $stmt->execute();
    $stmt->bind_result($col1, $col2, $col3);
@@ -122,7 +122,7 @@ function get_mensajes_privados_enviados($conexion, $usuario){
 }
 
 function get_mensajes_privados_recibidos($conexion, $usuario){
-   $stmt = $conexion->prepare("SELECT mensaje, emisor, fecha FROM mensajes WHERE usuarioDestinatario = ?");
+   $stmt = $conexion->prepare("SELECT mensaje, emisor, fecha FROM mensajes WHERE usuarioDestinatario = ? ORDER BY 3 DESC");
    $stmt->bind_param("s", $usuario);
    $stmt->execute();
    $stmt->bind_result($col1, $col2, $col3);
