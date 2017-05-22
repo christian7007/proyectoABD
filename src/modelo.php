@@ -270,6 +270,22 @@ function crear_grupo($conexion, $fechamin, $fechamax, $genero, $nombre){
    $stmt->close();
 }
 
+function get_pistas_usuarios($conexion, $usuario){
+   $usuario = "".$usuario."%";
+   $stmt = $conexion->prepare("SELECT nombre FROM usuario WHERE nombre LIKE ? LIMIT 3");
+   $stmt->bind_param("s", $usuario);
+   $stmt->execute();
+   $stmt->bind_result($usuarios);
+   $array = array();
+   
+   while ($stmt->fetch())
+      array_push($array, $usuarios);
+   
+   $stmt->close();
+   
+   return $array;
+}
+
 function cerrar_sesion(){
    session_start();
    session_unset();

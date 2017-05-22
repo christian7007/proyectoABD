@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       <!-- Bootstrap -->
       <link href="../css/bootstrap.min.css" rel="stylesheet">
       <link href="../css/melomanos.css" rel="stylesheet">
-      <script src="../js/registro.js"></script>
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
       <!--[if lt IE 9]>
@@ -39,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="../js/bootstrap.min.js"></script>
+      <script src="../js/privados.js"></script>
 
    </head>
    <body>
@@ -101,7 +101,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                                  <h4>Enviar mensaje</h4>
                               </div>
                               <div class="col-xs-5">
-                                 <input class="form-control" placeholder="Destinatario" id="ID_UsuarioDest" name="usuarioDest" type="text">
+                                 <input list="hints" class="form-control" placeholder="Destinatario" id="ID_UsuarioDest" name="usuarioDest" type="text">
+                                 <datalist id="hints">
+                                 </datalist>
                               </div>
                            </div>
                         </div>
